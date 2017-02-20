@@ -1,15 +1,30 @@
 console.log("IT'S ALIVE!");
 
 var timer =  setInterval(brewClock, 1000);
-var timeInSeconds = 240;
+var totalSeconds = 10;
 var hours;
 var minutes;
 var seconds;
-var timeString = "";
+var timeRemaining = "";
+
 
 function brewClock() {
-  minutes = timeInSeconds/60;
-  timeString = hours + ":" + minutes + ":" + seconds
-  console.log(timeString);
-  timeInSeconds--;
+  if (totalSeconds > 0) {
+    timeFormatter();
+    console.log(timeRemaining);
+    totalSeconds--;
+  }
+  else {
+    console.log("Your coffee is ready!");
+    clearInterval(brewClock);
+  }
+}
+
+function timeFormatter() {
+  seconds = totalSeconds;
+  timeRemaining = hours + ":" + minutes + ":" + seconds;
+}
+
+function overSixty() {
+
 }
