@@ -1,30 +1,37 @@
 console.log("IT'S ALIVE!");
 
-var timer =  setInterval(brewClock, 1000);
-var totalSeconds = 10;
-var hours;
+var timeTotal = 240; // In seconds
 var minutes;
 var seconds;
+var end = 0;
 var timeRemaining = "";
 
+var timer =  setInterval(brewClock, 1000);
 
 function brewClock() {
-  if (totalSeconds > 0) {
-    timeFormatter();
+  if (timeTotal >= 0) {
+    stringifyTime();
     console.log(timeRemaining);
-    totalSeconds--;
+    if (timeTotal == 0) {
+      console.log("Your coffee is ready! Now push the plunger down slowly...");
+    }
+    timeTotal--;
+  }
+}
+
+function stringifyTime() {
+  if (timeTotal < 10) {
+    seconds = "0" + timeTotal;
+  }
+  else if (timeTotal >= 10 && timeTotal < 60 ) {
+    seconds = timeTotal;
   }
   else {
-    console.log("Your coffee is ready!");
-    clearInterval(brewClock);
+    minuteFormatter();
   }
+  timeRemaining = minutes + ":" + seconds;
 }
 
-function timeFormatter() {
-  seconds = totalSeconds;
-  timeRemaining = hours + ":" + minutes + ":" + seconds;
-}
-
-function overSixty() {
+function minuteFormatter() {
 
 }
