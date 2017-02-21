@@ -20,11 +20,10 @@ function brewClock() {
 }
 
 function stringifyTime() {
-  if (timeTotal < 10) {
-    seconds = "0" + timeTotal;
-  }
-  else if (timeTotal >= 10 && timeTotal < 60 ) {
+  if (timeTotal < 60) {
+    minutes = "00";
     seconds = timeTotal;
+    secondFormatter();
   }
   else {
     minuteFormatter();
@@ -33,5 +32,16 @@ function stringifyTime() {
 }
 
 function minuteFormatter() {
+  minutes = Math.floor(timeTotal/60);
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  seconds = timeTotal - (minutes * 60);
+  secondFormatter();
+}
 
+function secondFormatter() {
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
 }
