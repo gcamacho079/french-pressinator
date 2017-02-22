@@ -1,12 +1,27 @@
 console.log("IT'S ALIVE!");
 
-var timeTotal = 24; // In seconds
+var timeTotal = 60; // In seconds
 var minutes;
 var seconds;
 var end = 0;
 var timeRemaining = "";
 
-var timer =  setInterval(brewClock, 1000);
+var waterTimer = setInterval(waterCooler, 1000);
+
+function waterCooler() {
+
+  if (timeTotal >= 0) {
+    stringifyTime();
+    console.log(timeRemaining);
+    timeTotal--;
+  }
+  else {
+    clearInterval(waterTimer);
+    console.log("Your water is now at the optimal temperature.");
+    timeTotal = 240;
+    var coffeeTimer =  setInterval(brewClock, 1000);
+  }
+}
 
 function brewClock() {
   if (timeTotal >= 0) {
@@ -15,7 +30,7 @@ function brewClock() {
     timeTotal--;
   }
   else {
-    clearInterval(timer);
+    clearInterval(coffeeTimer);
     console.log("Your coffee is ready! Now push the plunger down slowly...");
   }
 }
