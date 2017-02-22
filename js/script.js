@@ -1,6 +1,6 @@
 console.log("IT'S ALIVE!");
 
-var timeTotal = 240; // In seconds
+var timeTotal = 24; // In seconds
 var minutes;
 var seconds;
 var end = 0;
@@ -12,10 +12,11 @@ function brewClock() {
   if (timeTotal >= 0) {
     stringifyTime();
     console.log(timeRemaining);
-    if (timeTotal == 0) {
-      console.log("Your coffee is ready! Now push the plunger down slowly...");
-    }
     timeTotal--;
+  }
+  else {
+    clearInterval(timer);
+    console.log("Your coffee is ready! Now push the plunger down slowly...");
   }
 }
 
