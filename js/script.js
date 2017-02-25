@@ -8,6 +8,12 @@ var timeRemaining = "";
 
 var waterTimer = setInterval(waterCooler, 1000);
 
+/*********************************************************
+ Timer for Cooling Boiled Water
+ - Begins when user pushes button
+ - After timer stops, prompts user to begin pouring water into press
+*********************************************************/
+
 function waterCooler() {
 
   if (timeTotal >= 0) {
@@ -23,6 +29,12 @@ function waterCooler() {
   }
 }
 
+/*********************************************************
+ Timer for Brewing Coffee
+ - Begins when user pushes button
+ - Prompts stir 30 seconds into brew
+*********************************************************/
+
 function brewClock() {
   if (timeTotal >= 0) {
     stringifyTime();
@@ -34,6 +46,10 @@ function brewClock() {
     console.log("Your coffee is ready! Now push the plunger down slowly...");
   }
 }
+
+/*********************************************************
+ Time Formatters
+*********************************************************/
 
 function stringifyTime() {
   if (timeTotal < 60) {
